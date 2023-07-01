@@ -1,9 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('hello world!!');
-})
+app.get("/", (req: Request, res: Response) => {
+  res.send("hello world!!");
+});
 
 module.exports = app;
+
+console.log("test");

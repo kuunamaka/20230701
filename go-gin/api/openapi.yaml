@@ -1,0 +1,72 @@
+openapi: 3.0.2
+info:
+  title: Book API
+  version: 1.0.0
+servers:
+- description: development
+  url: http://localhost:3000
+paths:
+  /books:
+    get:
+      description: Show my book list
+      operationId: getBooks
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Books'
+          description: Array of books
+components:
+  responses:
+    Books:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Books'
+      description: Array of books
+  schemas:
+    Book:
+      example:
+        finished_at: 2015-05-05T00:00:00.000+00:00
+        author: Teresa
+        id: 1
+        title: Teresa book
+      properties:
+        id:
+          example: 1
+          type: integer
+        title:
+          example: Teresa book
+          type: string
+        author:
+          example: Teresa
+          type: string
+        finished_at:
+          example: 2015-05-05
+          format: date
+          type: string
+      required:
+      - author
+      - id
+      - title
+      type: object
+    Books:
+      example:
+        books:
+        - finished_at: 2015-05-05T00:00:00.000+00:00
+          author: Teresa
+          id: 1
+          title: Teresa book
+        - finished_at: 2015-05-05T00:00:00.000+00:00
+          author: Teresa
+          id: 1
+          title: Teresa book
+      properties:
+        books:
+          items:
+            $ref: '#/components/schemas/Book'
+          type: array
+      required:
+      - books
+      type: object
